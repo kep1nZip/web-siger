@@ -11,16 +11,28 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/quotes" element={<Quotes />} />
-      </Routes>
-      <Footer />
+      <div
+        className="min-h-screen"
+        style={{
+          background: "linear-gradient(270deg, #b91c1c, #f97316, #facc15)",
+          backgroundSize: "600% 600%",
+          animation: "gradientMove 12s ease infinite"
+        }}
+      >
+        <Navbar/>
+        <div className="pt-24">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/quotes" element={<Quotes />} />
+          </Routes>
+          <Footer/>
+        </div>
+      </div>
     </BrowserRouter>
   );
 }
+
 
 export default App;

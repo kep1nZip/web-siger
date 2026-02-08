@@ -1,13 +1,17 @@
 function Quotes() {
+  
   return (
-    <div style={{ padding: 20, textAlign: "center" }}>
-      <h1>SIGERS Moment</h1>
-
-      <img src="/assets/fotobareng.jpg" width="500" />
+    <div style={{ padding: 20, 
+      display: "flex", 
+      flexDirection: "column", 
+      alignItems: "center", 
+      textAlign: "center"
+    }}>
+      
+      <img src="src\assets\fotbar.jpg" width="750" />
 
       <blockquote style={{ marginTop: 20, fontSize: 20 }}>
-        "Bukan soal seberapa sering kita nongkrong,
-        tapi seberapa goblok kita bareng."
+        "PAK DONI KAPAN ACC KRSNYAAAAAA"
       </blockquote>
     </div>
   );
