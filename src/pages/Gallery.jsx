@@ -10,7 +10,6 @@ function Gallery() {
         Foto Aib SIGERS
       </h1>
 
-      {/* MASONRY */}
       <div className="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6">
         {photos.map((photo) => (
           <div
@@ -24,7 +23,6 @@ function Gallery() {
               className="w-full rounded-2xl transition duration-500 group-hover:scale-105"
             />
 
-            {/* overlay */}
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition rounded-2xl flex items-end p-4">
               <p className="text-white text-sm">{photo.caption}</p>
             </div>
@@ -32,7 +30,6 @@ function Gallery() {
         ))}
       </div>
 
-      {/* MODAL */}
       {selected && (
         <div
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
