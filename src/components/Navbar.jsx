@@ -15,6 +15,9 @@ function Navbar() {
           <Link to="/gallery" className="text-zinc-300 hover:text-white transition">
             Foto Aib
           </Link>
+          <Link to="/world-record" className="text-zinc-300 hover:text-white transition">
+            World Record
+          </Link>
           <Link to="/about" className="text-zinc-300 hover:text-white transition">
             About
           </Link>

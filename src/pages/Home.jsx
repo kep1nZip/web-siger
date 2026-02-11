@@ -8,16 +8,9 @@ function Home() {
         Member SIGERS
       </h1>
 
-      <div className="flex flex-col gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {members.map((m, index) => (
-          <div
-            key={index}
-            className={`flex ${
-              index % 2 === 0
-                ? "justify-start"
-                : "justify-end"
-            } md:${index % 2 === 0 ? "justify-start" : "justify-end"} justify-center`}
-          >
+          <div key={index} className="flex justify-center">
             <MemberCard member={m} />
           </div>
         ))}

@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
+import WorldRecord from "./pages/WorldRecord";
 import About from "./pages/About";
 import Quotes from "./pages/Quotes";
 
@@ -24,6 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/world-record" element={<WorldRecord />} />
             <Route path="/about" element={<About />} />
             <Route path="/quotes" element={<Quotes />} />
           </Routes>
