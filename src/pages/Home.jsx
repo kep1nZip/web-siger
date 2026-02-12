@@ -22,10 +22,18 @@ function Home() {
           <p className="text-zinc-200 text-lg">
             Kumpulan member SIGERS yang penuh kejomokan (yapi doang sih kalo ini wkwk)
           </p>
+
+          <a
+            href="#members"
+            className="inline-block mt-8 px-6 py-3 bg-gradient-to-r from-red-500 to-orange-400 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition"
+          >
+            Lihat Members ↓
+          </a>
+
         </div>
       </section>
 
-      <div className="relative pt-12 pb-16">
+      <div id="members" className="relative pt-12 pb-16">
 
         <div className="absolute top-1 left-0 w-screen overflow-hidden opacity-10 pointer-events-none">
           <div className="marquee-text text-[140px] font-extrabold text-white whitespace-nowrap">
@@ -38,9 +46,17 @@ function Home() {
             Member SIGERS
           </h1>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div
+            id="members"
+            className=" 
+            columns-1 
+            sm:columns-2 
+            lg:columns-3 
+            gap-8
+            [column-fill:_balance]"
+          >
             {members.map((m, index) => (
-              <div key={index} className="flex justify-center">
+              <div key={index} className="mb-8 break-inside-avoid">
                 <MemberCard member={m}/>
               </div>
             ))}

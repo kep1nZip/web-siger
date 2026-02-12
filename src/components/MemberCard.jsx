@@ -17,7 +17,7 @@ function MemberCard({ member }) {
       <img
         src={member.foto}
         alt={member.nama}
-        className="w-full rounded-xl mb-4"
+        className="w-full rounded-xl mb-4 object-cover"
       />
 
       <h2 className="text-2xl font-semibold mb-2">{member.nama}</h2>
