@@ -6,7 +6,12 @@ const fs = require("fs");
 const { v2: cloudinary } = require("cloudinary");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
+
+// IMPORTANT: allow external access
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +25,10 @@ const SECRET_TOKEN = process.env.SECRET_TOKEN;
 
 app.post("/login", (req, res) => {
   const { password } = req.body;
+
+  if (!ADMIN_PASSWORD || !SECRET_TOKEN) {
+    return res.status(500).json({ message: "Server env belum diset!" });
+  }
 
   if (password === ADMIN_PASSWORD) {
     return res.json({ token: SECRET_TOKEN });
@@ -55,7 +64,7 @@ cloudinary.config({
 });
 
 // ===============================
-// 📁 SETUP JSON STORAGE
+// 📁 JSON STORAGE
 // ===============================
 
 if (!fs.existsSync("photos.json")) {
@@ -65,21 +74,19 @@ if (!fs.existsSync("photos.json")) {
 const upload = multer({ storage: multer.memoryStorage() });
 
 // ===============================
-// 📸 ROUTES
+// ROUTES
 // ===============================
 
-// Get all photos
 app.get("/photos", (req, res) => {
   const data = JSON.parse(fs.readFileSync("photos.json"));
   res.json(data);
 });
 
-// Upload photo (PROTECTED)
 app.post("/upload", authenticate, upload.single("image"), async (req, res) => {
   try {
     const { caption } = req.body;
 
-    const result = await cloudinary.uploader.upload_stream(
+    const stream = cloudinary.uploader.upload_stream(
       { folder: "aib-photos" },
       async (error, result) => {
         if (error) {
@@ -101,15 +108,11 @@ app.post("/upload", authenticate, upload.single("image"), async (req, res) => {
       }
     );
 
-    result.end(req.file.buffer);
+    stream.end(req.file.buffer);
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }
 });
-
-// ===============================
-// DELETE PHOTO (PROTECTED)
-// ===============================
 
 app.delete("/photos/:id", authenticate, async (req, res) => {
   const id = parseInt(req.params.id);
@@ -131,10 +134,4 @@ app.delete("/photos/:id", authenticate, async (req, res) => {
   fs.writeFileSync("photos.json", JSON.stringify(photos, null, 2));
 
   res.json({ message: "Foto berhasil dihapus" });
-});
-
-// ===============================
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
 });
