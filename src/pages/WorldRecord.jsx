@@ -1,6 +1,10 @@
 import worldRecords from "../data/worldRecords";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function WorldRecord() {
+  const { token } = useContext(AuthContext);
+
   return (
     <div className="max-w-6xl mx-auto px-5 pt-28 pb-16">
       
@@ -13,6 +17,7 @@ function WorldRecord() {
       <h1 className="text-4xl font-bold text-white text-center mb-14">
         World Record SIGERS
       </h1>
+
 
       <div className="space-y-16 max-w-6xl mx-auto">
         {worldRecords.map((item, index) => (
