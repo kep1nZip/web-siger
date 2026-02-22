@@ -9,6 +9,8 @@ function Gallery() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [caption, setCaption] = useState("");
 
+console.log("API_URL:", API_URL);
+
   // 🔥 FETCH PHOTOS
   useEffect(() => {
     const fetchPhotos = async () => {
