@@ -8,12 +8,20 @@ const { v2: cloudinary } = require("cloudinary");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// IMPORTANT: allow external access
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// ===============================
+// ✅ CORS CONFIG (PRODUCTION READY)
+// ===============================
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://web-sigers.vercel.app", // GANTI kalau domain beda
+    ],
+    methods: ["GET", "POST", "DELETE"],
+  })
+);
+
 app.use(express.json());
 
 // ===============================
@@ -77,6 +85,11 @@ const upload = multer({ storage: multer.memoryStorage() });
 // ROUTES
 // ===============================
 
+// Health check (biar root gak "Cannot GET /")
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
 app.get("/photos", (req, res) => {
   const data = JSON.parse(fs.readFileSync("photos.json"));
   res.json(data);
@@ -84,6 +97,10 @@ app.get("/photos", (req, res) => {
 
 app.post("/upload", authenticate, upload.single("image"), async (req, res) => {
   try {
+    if (!req.file) {
+      return res.status(400).json({ message: "File tidak ditemukan!" });
+    }
+
     const { caption } = req.body;
 
     const stream = cloudinary.uploader.upload_stream(
@@ -134,4 +151,12 @@ app.delete("/photos/:id", authenticate, async (req, res) => {
   fs.writeFileSync("photos.json", JSON.stringify(photos, null, 2));
 
   res.json({ message: "Foto berhasil dihapus" });
+});
+
+// ===============================
+// START SERVER (HARUS PALING BAWAH)
+// ===============================
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
