@@ -1,13 +1,13 @@
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 function Login() {
   const [password, setPassword] = useState("");
   const { token, setToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // 🔥 Kalau sudah login, langsung ke home
   useEffect(() => {
     if (token) {
       navigate("/home");
@@ -20,7 +20,7 @@ function Login() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/login", {
+      const res = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,12 +31,8 @@ function Login() {
       const data = await res.json();
 
       if (res.ok) {
-        // Simpan ke context
         setToken(data.token);
-
-        // Simpan ke localStorage biar tidak logout saat refresh
         localStorage.setItem("token", data.token);
-
         alert("Login berhasil!");
         navigate("/home");
       } else {
