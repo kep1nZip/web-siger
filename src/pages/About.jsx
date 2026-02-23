@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import fotbar from "../assets/fotbar.jpg";
 
 function About() {
 
@@ -83,7 +84,7 @@ function About() {
 
           <div className="relative group overflow-hidden rounded-2xl">
             <img
-              src="src/assets/fotbar.jpg"
+              src={fotbar}
               alt="SIGERS"
               className="rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-105"
             />

@@ -1,10 +1,12 @@
+import fotbar from "../assets/fotbar.jpg";
+
 function Quotes() {
   return (
     <div className="relative min-h-screen flex items-center justify-center px-6 py-20 text-white overflow-hidden">
       <div className="relative max-w-4xl md:max-w-6xl w-full text-center z-10">
         <div className="relative group rounded-3xl overflow-hidden shadow-2xl">
           <img
-            src="src/assets/fotbar.jpg"
+            src={fotbar}
             alt="Fotbar"
             className="
               w-full 
