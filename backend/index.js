@@ -12,16 +12,7 @@ const PORT = process.env.PORT || 8080;
 // ✅ CORS CONFIG (PRODUCTION READY)
 // ===============================
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://web-sigers.vercel.app",
-      "https://web-sigers-wine.vercel.app" // GANTI kalau domain beda
-    ],
-    methods: ["GET", "POST", "DELETE"],
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
