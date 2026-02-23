@@ -1,5 +1,6 @@
 import MemberCard from "../components/MemberCard";
 import members from "../data/members";
+import heroImage from "../assets/sigers-bubat.jpg"; // ✅ FIX DI SINI
 
 function Home() {
   return (
@@ -11,7 +12,7 @@ function Home() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: "url('src/assets/sigers-bubat.jpg')",
+            backgroundImage: `url(${heroImage})`, // ✅ FIX DI SINI
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
@@ -79,11 +80,9 @@ function Home() {
         </p>
       </section>
 
-      {/* kosongan */}
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
       </div>
-
 
       <div id="members" className="relative pt-12 pb-16">
 
@@ -99,7 +98,6 @@ function Home() {
           </h1>
 
           <div
-            id="members"
             className=" 
             columns-1 
             sm:columns-2 

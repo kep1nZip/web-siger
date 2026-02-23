@@ -1,7 +1,16 @@
+import member1 from "../assets/member1.png";
+import member2 from "../assets/member2.png";
+import member3 from "../assets/member3.png";
+import member4 from "../assets/member4.png";
+import member5 from "../assets/member5.png";
+import member6 from "../assets/member6.png";
+import member7 from "../assets/member7.png";
+import member8 from "../assets/member8.png";
+
 const members = [
     {
         nama: "Yapii",
-        foto: "src/assets/member1.png",
+        foto: member1,
         hobi: "ngajomok",
         ulangTahun: "gk tau nigger",
         kelebihan: "Ngaloco jomok",
@@ -11,7 +20,7 @@ const members = [
     },
     {
         nama: "Rapaa",
-        foto: "src/assets/member2.png",
+        foto: member2,
         hobi: "Aura farming",
         ulangTahun: "Tiap hari",
         kelebihan: "IPK 4.0",
@@ -21,7 +30,7 @@ const members = [
     },
     {
         nama: "Firas",
-        foto: "src/assets/member3.png",
+        foto: member3,
         hobi: "Hongkai impek tiga",
         ulangTahun: "gk tau nigger",
         kelebihan: "Kesayangan Bronya",
@@ -31,7 +40,7 @@ const members = [
     },
     {
         nama: "Darren",
-        foto: "src/assets/member4.png",
+        foto: member4,
         hobi: "Ngaloco Johnny Sins",
         ulangTahun: "gk tau nigger",
         kelebihan: "Penyelamat warga Bdg",
@@ -41,7 +50,7 @@ const members = [
     },
     {
         nama: "Kepin",
-        foto: "src/assets/member5.png",
+        foto: member5,
         hobi: "gk tau",
         ulangTahun: "kepo nigger",
         kelebihan: "berat badan",
@@ -51,7 +60,7 @@ const members = [
     },
     {
         nama: "Azmii",
-        foto: "src/assets/member6.png",
+        foto: member6,
         hobi: "Roblok",
         ulangTahun: "gk tau nigger",
         kelebihan: "Roblok + aktif organisasi",
@@ -61,7 +70,7 @@ const members = [
     },
     {
         nama: "Abian",
-        foto: "src/assets/member7.png",
+        foto: member7,
         hobi: "Gooning + doomscroll",
         ulangTahun: "gk tau nigger",
         kelebihan: "nigga know a lot of ball (due to doomscroll addictive)",
@@ -71,7 +80,7 @@ const members = [
     },
     {
         nama: "Fathan",
-        foto: "src/assets/member8.png",
+        foto: member8,
         hobi: "Aura farming",
         ulangTahun: "gk tau nigger",
         kelebihan: "Jago gambar",
